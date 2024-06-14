@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Website</title>
+    <link rel="stylesheet" href="./CSS/style.css">
+    <!-- icon links -->
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+    <!-- remix icon link -->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet">
+    <!-- google font  -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Jost:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- header done -->
+    <header>
+        <a href="#" class="logo">Vishal.</a>
+        <ul class="navlist">
+            <li><a href="./index.html" class="first">Home</a></li>
+            <li><a href="./About.html" class="first">About me</a></li>
+            <li><a href="./projects.html" class="first">Projects</a></li>
+            <li><a href="./contact.html" class="first">Contact Me</a></li>
+        </ul>
+
+        <div class="nav-right">
+            <a href="#" class="nav-btn"></a>
+            <div class="bx bx-menu" id="menu-icon"></div>
+        </div>
+    </header>
+    <!-- contact me  -->
+
+    <div id="contact" class="contact-form-container">
+        <h1>Contact Me</h1>
+        <form class="contact-form" action="submit-form.php" method="POST">
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" rows="5" required></textarea>
+            </div>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+
+    <!-- footer -->
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <h2>About Me</h2>
+                    <p>
+                        Hi, I'm Vishal, a web developer with a strong background in
+                        mathematics and computer programming. Passionate about creating
+                        innovative solutions and continuously learning new technologies.
+                    </p>
+                </div>
+                <div class="footer-nav">
+                    <h2>Navigation</h2>
+                    <ul>
+                        <li><a href="./index.html">Home</a></li>
+                        <li><a href="./About.html">About Me</a></li>
+                        <li><a href="./projects.html">Projects</a></li>
+                        <li><a href="./contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-social">
+                    <h2>Follow Me</h2>
+                    <div class="social-icons">
+                        <a href="https://www.linkedin.com/in/vishal-chavda-1068b41a1/"><i class="ri-linkedin-box-fill"></i></a>
+                        <a href="https://github.com/Vishal11799"><i class="ri-github-fill"></i></a>
+                        <a href="https://twitter.com/"><i class="ri-twitter-fill"></i></a>
+                        <a href="https://www.facebook.com/"><i class="ri-facebook-fill"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Vishal Chavda. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    
+</body>
+</html>
