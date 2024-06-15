@@ -38,13 +38,4 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-
-var hbs = require('hbs');
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'hbs');
-
-
-hbs.registerPartials(path.join(__dirname, 'views/partials'));
-
-
 module.exports = app;

@@ -1,0 +1,23 @@
+# Personal Portfolio Website
+
+This is a personal portfolio website created using Node.js, Express, and Handlebars. It includes pages for Home, About Me, Projects, and Contact Me. The website is designed to showcase personal projects and provide a way to contact me.
+
+## Features
+
+- **Home**: A brief introduction and welcome message.
+- **About Me**: Information about my background, skills, and interests.
+- **Projects**: A showcase of my projects with descriptions and links.
+- **Contact Me**: A form to get in touch with me.
+
+## Technologies Used
+
+- **Node.js**: JavaScript runtime for building server-side applications.
+- **Express**: Web framework for Node.js.
+- **Handlebars (HBS)**: Templating engine for dynamic web pages.
+- **Bootstrap**: CSS framework for responsive design.
+- **Git**: Version control system for tracking changes.
+- **GitHub**: Platform for hosting and collaborating on code.
+
+## Deployment
+
+This application is deployed on Render. To deploy the application to a cloud service,render the cloud service provider.
