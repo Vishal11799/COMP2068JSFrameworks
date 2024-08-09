@@ -10,7 +10,7 @@
 <body>
     <header class="header">
         <div class="logo">
-            <img src="/images/logo.png" alt="App Logo">
+            <img src='/images/Expense_Tracker_Logo.png' alt="App Logo">
             <span class="app-name">Expense Tracker</span>
         </div>
         <div class="profile">
@@ -20,6 +20,22 @@
     </header>
 
     <div class="container home-container">
+        <!-- Dashboard Section -->
+        <h2 class="mt-5">Expense Summary Dashboard</h2>
+        <div class="row">
+            <div class="col-md-4">
+                <h4>Total Spending: ${{totalSpent}}</h4>
+            </div>
+            <div class="col-md-4">
+                <h4>Remaining Budget: ${{remainingBudget}}</h4>
+            </div>
+            <div class="col-md-4">
+                <h4>Budget: ${{budget}}</h4>
+            </div>
+        </div>
+
+        
+
         <!-- Budgeting Section -->
         <h2 class="mt-5">Set Your Monthly Budget</h2>
         <form action="/home/set-budget" method="POST">
@@ -58,7 +74,6 @@
                         <option value="subscription">Subscription</option>
                         <option value="dining">Dining</option>
                         <option value="other">Others</option>
-                        <!-- Other categories -->
                     </select>
                 </div>
                 <div class="form-group col-md-4">
@@ -135,11 +150,17 @@
             </tbody>
         </table>
 
-        <!-- Action Buttons -->
-        <div class="home-actions mt-4">
-            <a href="/charts" class="btn btn-info">View Charts</a>
-            <a href="/pdf" class="btn btn-info">Generate PDF</a>
+        <!-- Chart Container (Initially hidden) -->
+        <div id="chartsContainer" style="display: none; margin-top: 20px;">
+            <canvas id="categoryChart"></canvas>
         </div>
+
+        <!-- Button to show/hide the charts -->
+        <div class="home-actions mt-4">
+            <a href="/home/charts" id="toggleChartsBtn" class="btn btn-info">View Charts</a>
+            <a href="/home/download-expenses" class="btn btn-info">Generate PDF</a>
+        </div>
+        
     </div>
 </body>
 </html>

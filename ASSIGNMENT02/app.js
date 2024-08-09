@@ -7,11 +7,11 @@ var hbs = require("hbs");
 
 // Configs
 var config = require("./configs/globals");
-
 var loginRouter = require("./routes/login");
 var registerRouter = require("./routes/register");
-var homeRouter = require("./routes/home"); // Add this line
+var homeRouter = require("./routes/home");
 var projectsRouter = require("./routes/projects");
+
 
 var app = express();
 
@@ -20,17 +20,17 @@ app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "hbs");
 
 // Register a helper function to format dates
-hbs.registerHelper('formatDate', function(date) {
-    return new Date(date).toLocaleDateString(); // Formats as 'MM/DD/YYYY'
+hbs.registerHelper("formatDate", function (date) {
+  return new Date(date).toLocaleDateString(); // Formats as 'MM/DD/YYYY'
 });
 
-hbs.registerHelper('formatDateForInput', function(date) {
-    return new Date(date).toISOString().split('T')[0]; // Formats as 'YYYY-MM-DD' for input field
+hbs.registerHelper("formatDateForInput", function (date) {
+  return new Date(date).toISOString().split("T")[0]; // Formats as 'YYYY-MM-DD' for input field
 });
 
 // Register the 'eq' helper for comparison
-hbs.registerHelper('eq', function(a, b) {
-    return a === b;
+hbs.registerHelper("eq", function (a, b) {
+  return a === b;
 });
 
 // Middleware setup
@@ -42,19 +42,22 @@ app.use(express.static(path.join(__dirname, "public")));
 
 // Routes setup
 app.use("/projects", projectsRouter);
+
 app.use("/", loginRouter);
 app.use("/register", registerRouter);
 app.use("/home", homeRouter); // Add this line
 
 // Connect to MongoDB
 mongoose
-  .connect("mongodb+srv://creditcardadmin:TAJSUPpXS8RvlVyK@cluster0.zklhwz3.mongodb.net/")
+  .connect(
+    "mongodb+srv://creditcardadmin:TAJSUPpXS8RvlVyK@cluster0.zklhwz3.mongodb.net/"
+  )
   .then(() => {
     console.log("Connected to MongoDB!");
   })
   .catch((err) => {
     console.log(err);
-});
+  });
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

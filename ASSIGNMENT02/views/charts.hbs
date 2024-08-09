@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{title}}</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/stylesheets/chart-style.css"> <!-- Link to the external CSS file -->
+</head>
+<body>
+    <div class="container">
+        <h2 class="mt-5">{{title}}</h2>
+        <div class="chart-container">
+            <canvas id="categoryChart"></canvas>
+        </div>
+        <a href="/home" class="btn btn-primary mt-3">Back to Home</a>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="/javascripts/chart-script.js"></script> <!-- Link to the external JS file -->
+    <script>
+        // Parse the category spending data passed from the server
+        const categorySpending = JSON.parse(`{{{categorySpending}}}`);
+        initializeChart(categorySpending); // Initialize the chart with the parsed data
+    </script>
+
+</body>
+</html>

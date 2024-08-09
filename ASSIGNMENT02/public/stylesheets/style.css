@@ -23,17 +23,21 @@ body {
 
 .logo {
   display: flex;
-  align-items: center;
+  align-items: center; /* Vertically centers the image and text */
+  margin-bottom: 20px; /* Adds some space below the logo section */
 }
 
+/* Styling for the logo image */
 .logo img {
-  width: 40px;
-  margin-right: 10px;
+  width: 100px; /* Adjust the size of the logo */
+  height: auto; /* Keep the aspect ratio */
+  margin-right: 10px; /* Adds some space between the logo and the text */
 }
 
-.app-name {
-  font-size: 24px;
-  font-weight: bold;
+/* Styling for the app name text */
+.logo .app-name {
+  font-size: 24px; /* Adjust the size of the text */
+  font-weight: bold; /* Make the text bold */ /* Set the text color */
 }
 
 .profile {

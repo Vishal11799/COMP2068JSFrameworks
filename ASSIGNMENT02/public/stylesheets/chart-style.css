@@ -1,0 +1,13 @@
+/* chart-style.css */
+
+/* Style the container to make the chart smaller */
+.chart-container {
+    position: relative;
+    width: 50%; /* Adjust the percentage to make it smaller or larger */
+    margin: 0 auto; /* Center the chart */
+}
+
+#categoryChart {
+    max-width: 100%;
+    height: auto;
+}

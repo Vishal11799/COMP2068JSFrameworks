@@ -32,7 +32,8 @@ body {
 }
 
 .product-image {
-  width: 80%;
+  width: 100%; /* Make the product image fit the container */
+  height: auto; /* Keep the aspect ratio */
 }
 
 /* Right Section Styles */
@@ -77,10 +78,10 @@ body {
 /* Login Form */
 .brand-logo {
   display: block;
-  margin: 0 auto 30px;
-  width: 60px;
+  margin: 0 auto 20px; /* Center the logo and add some space below it */
+  width: 150px; /* Adjust the size of the logo */
+  height: auto; /* Keep the aspect ratio */
 }
-
 .form-group {
   margin-bottom: 20px;
 }
@@ -139,7 +140,13 @@ body {
 }
 
 .social-icons a {
+  font-size: 24px; /* Adjust icon size */
+  color: #4285f4; /* Google blue */
   text-decoration: none;
+  margin: 0 10px;
+}
+.social-icons a:hover {
+  color: #3367d6; /* Darker blue on hover */
 }
 
 /* Home Page Styles */
