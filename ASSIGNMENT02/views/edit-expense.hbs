@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Expense</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/stylesheets/style.css">
+</head>
+<body>
+    <div class="container home-container">
+        <h2>Edit Expense</h2>
+        <form action="/home/edit-expense/{{expense._id}}" method="POST">
+            <div class="form-row">
+                <div class="form-group col-md-4">
+                    <label for="category">Category</label>
+                    <select id="category" name="category" class="form-control" required>
+                        <option value="grocery" {{#if (eq expense.category "grocery")}}selected{{/if}}>Grocery</option>
+                        <!-- Other categories -->
+                    </select>
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="amount">Amount</label>
+                    <input type="number" id="amount" name="amount" class="form-control" value="{{expense.amount}}" required>
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="date">Date</label>
+                    <input type="date" id="date" name="date" class="form-control" value="{{formatDateForInput expense.date}}" required>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="payment-method">Payment Method</label>
+                    <select id="payment-method" name="payment_method" class="form-control" required>
+                        <option value="credit-card" {{#if (eq expense.payment_method "credit-card")}}selected{{/if}}>Credit Card</option>
+                        <option value="debit-card" {{#if (eq expense.payment_method "debit-card")}}selected{{/if}}>Debit Card</option>
+                    </select>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="location">Location</label>
+                    <input type="text" id="location" name="location" class="form-control" value="{{expense.location}}" placeholder="e.g., Walmart, New York">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="description">Description</label>
+                <textarea id="description" name="description" class="form-control" rows="2" placeholder="Describe your expense (optional)">{{expense.description}}</textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="tags">Tags/Labels</label>
+                <input type="text" id="tags" name="tags" class="form-control" value="{{expense.tags}}" placeholder="e.g., work, personal, urgent">
+                <small class="form-text text-muted">Separate tags with commas.</small>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Update Expense</button>
+        </form>
+    </div>
+</body>
+</html>

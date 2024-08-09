@@ -19,17 +19,14 @@
         </div>
     </header>
 
-    
-
     <div class="container home-container">
-
         <!-- Budgeting Section -->
         <h2 class="mt-5">Set Your Monthly Budget</h2>
-        <form action="/set-budget" method="POST">
+        <form action="/home/set-budget" method="POST">
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="monthly-budget">Monthly Budget</label>
-                    <input type="number" id="monthly-budget" name="monthly_budget" class="form-control" placeholder="$2000">
+                    <input type="number" id="monthly-budget" name="monthly_budget" class="form-control" value="{{budget}}" placeholder="$2000">
                 </div>
                 <div class="form-group col-md-6">
                     <button type="submit" class="btn btn-success mt-4">Set Budget</button>
@@ -37,9 +34,12 @@
             </div>
         </form>
 
+        <h4>Remaining Budget: ${{remainingBudget}}</h4>
+        <h4>Total Spent: ${{spent}}</h4>
+
         <!-- Expense Entry Form -->
         <h2>Add Your Expense</h2>
-        <form action="/add-expense" method="POST">
+        <form action="/home/add-expense" method="POST">
             <div class="form-row">
                 <div class="form-group col-md-4">
                     <label for="category">Category</label>
@@ -58,6 +58,7 @@
                         <option value="subscription">Subscription</option>
                         <option value="dining">Dining</option>
                         <option value="other">Others</option>
+                        <!-- Other categories -->
                     </select>
                 </div>
                 <div class="form-group col-md-4">
@@ -114,11 +115,26 @@
                 </tr>
             </thead>
             <tbody>
-                <!-- Expenses will be dynamically generated here -->
+                {{#each expenses}}
+                <tr>
+                    <td>{{formatDate date}}</td>
+                    <td>{{category}}</td>
+                    <td>${{amount}}</td>
+                    <td>{{payment_method}}</td>
+                    <td>{{location}}</td>
+                    <td>{{description}}</td>
+                    <td>{{tags}}</td>
+                    <td>
+                        <a href="/home/edit-expense/{{_id}}" class="btn btn-sm btn-secondary">Edit</a>
+                        <form action="/home/delete-expense/{{_id}}" method="POST" style="display:inline;">
+                            <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+                {{/each}}
             </tbody>
         </table>
 
-        
         <!-- Action Buttons -->
         <div class="home-actions mt-4">
             <a href="/charts" class="btn btn-info">View Charts</a>
