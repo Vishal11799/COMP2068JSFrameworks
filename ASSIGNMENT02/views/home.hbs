@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - Expense Tracker</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/stylesheets/style.css">
+</head>
+<body>
+    <header class="header">
+        <div class="logo">
+            <img src="/images/logo.png" alt="App Logo">
+            <span class="app-name">Expense Tracker</span>
+        </div>
+        <div class="profile">
+            <span>Welcome, {{username}}</span>
+            <a href="/logout" class="btn btn-outline-light btn-sm ml-3">Logout</a>
+        </div>
+    </header>
+
+    
+
+    <div class="container home-container">
+
+        <!-- Budgeting Section -->
+        <h2 class="mt-5">Set Your Monthly Budget</h2>
+        <form action="/set-budget" method="POST">
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="monthly-budget">Monthly Budget</label>
+                    <input type="number" id="monthly-budget" name="monthly_budget" class="form-control" placeholder="$2000">
+                </div>
+                <div class="form-group col-md-6">
+                    <button type="submit" class="btn btn-success mt-4">Set Budget</button>
+                </div>
+            </div>
+        </form>
+
+        <!-- Expense Entry Form -->
+        <h2>Add Your Expense</h2>
+        <form action="/add-expense" method="POST">
+            <div class="form-row">
+                <div class="form-group col-md-4">
+                    <label for="category">Category</label>
+                    <select id="category" name="category" class="form-control" required>
+                        <option value="grocery">Grocery</option>
+                        <option value="fuel">Fuel</option>
+                        <option value="entertainment">Entertainment</option>
+                        <option value="bills">Bills</option>
+                        <option value="study">Study</option>
+                        <option value="water-bills">Water Bills</option>
+                        <option value="mobile">Mobile</option>
+                        <option value="home-security">Home Security</option>
+                        <option value="installments">Installments</option>
+                        <option value="insurance">Insurance</option>
+                        <option value="rent">Rent</option>
+                        <option value="subscription">Subscription</option>
+                        <option value="dining">Dining</option>
+                        <option value="other">Others</option>
+                    </select>
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="amount">Amount</label>
+                    <input type="number" id="amount" name="amount" class="form-control" required>
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="date">Date</label>
+                    <input type="date" id="date" name="date" class="form-control" required>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="payment-method">Payment Method</label>
+                    <select id="payment-method" name="payment_method" class="form-control" required>
+                        <option value="credit-card">Credit Card</option>
+                        <option value="debit-card">Debit Card</option>
+                    </select>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="location">Location</label>
+                    <input type="text" id="location" name="location" class="form-control" placeholder="e.g., Walmart, New York">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="description">Description</label>
+                <textarea id="description" name="description" class="form-control" rows="2" placeholder="Describe your expense (optional)"></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="tags">Tags/Labels</label>
+                <input type="text" id="tags" name="tags" class="form-control" placeholder="e.g., work, personal, urgent">
+                <small class="form-text text-muted">Separate tags with commas.</small>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Add Expense</button>
+        </form>
+
+        <!-- Expense List -->
+        <h2 class="mt-5">Recorded Expenses</h2>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Category</th>
+                    <th>Amount</th>
+                    <th>Payment Method</th>
+                    <th>Location</th>
+                    <th>Description</th>
+                    <th>Tags/Labels</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Expenses will be dynamically generated here -->
+            </tbody>
+        </table>
+
+        
+        <!-- Action Buttons -->
+        <div class="home-actions mt-4">
+            <a href="/charts" class="btn btn-info">View Charts</a>
+            <a href="/pdf" class="btn btn-info">Generate PDF</a>
+        </div>
+    </div>
+</body>
+</html>
