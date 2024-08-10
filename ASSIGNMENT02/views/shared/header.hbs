@@ -6,11 +6,24 @@
         </div>
         <nav class="nav-links">
             <a href="/">Home</a>
-            <a href="/home">Main</a>
+            <a href="/home" id="mainLink" style="display: none;">Main</a>
             <a href="/login">Login</a>
-            <a href="/register">register</a>
-            <a href="/about">About</a>
+            <a href="/register">Register</a>
+            <a href="/login">Logout</a>
         </nav>
-        </div>
     </div>
 </header>
+
+<!-- Place your script here -->
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    var isAuthenticated = {{isAuthenticated}};
+
+    if (isAuthenticated) {
+        var mainLink = document.getElementById('mainLink');
+        if (mainLink) {
+            mainLink.style.display = 'inline-block';
+        }
+    }
+});
+</script>

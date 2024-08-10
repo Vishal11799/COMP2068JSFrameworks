@@ -63,7 +63,7 @@ router.post("/register", (req, res, next) => {
         console.log(err);
         return res.redirect("/register");
       }
-      res.redirect("/home");
+      res.redirect("/login");
     });
   });
 });

@@ -10,7 +10,6 @@ var globals = require("./configs/globals");
 var indexRouter = require("./routes/index");
 var homeRouter = require("./routes/home");
 
-
 //import passport
 var passport = require("passport");
 var session = require("express-session");
@@ -42,11 +41,13 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 //config
-app.use(session({
-  secret: 'creditcardexpancetraker',
-  resave: false,
-  saveUninitialized: false
-}));
+app.use(
+  session({
+    secret: "creditcardexpancetraker",
+    resave: false,
+    saveUninitialized: false,
+  })
+);
 //start passport
 app.use(passport.initialize());
 app.use(passport.session());
@@ -68,17 +69,15 @@ app.use("/", indexRouter);
 mongoose
   .connect(globals.ConnectionString.MongoDB)
   .then(() => {
-    console.log('Connected successfully to MongoDB!');
+    console.log("Connected successfully to MongoDB!");
   })
   .catch((err) => {
     console.log(err);
   });
 
+// Example middleware to set a variable for authenticated status
 
-// catch 404 and forward to error handler
-app.use(function (req, res, next) {
-  res.status(404).send("Sorry, that page doesn't exist.");
-});
+
 
 // error handler
 app.use(function (err, req, res, next) {
