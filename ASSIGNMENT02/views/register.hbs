@@ -1,51 +1,39 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register</title>
-    <link rel="stylesheet" href="/stylesheets/loginregiter.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-</head>
-<body>
-    <div class="container">
-        <div class="left-section">
-            <img src="/images/images-removebg-preview.png" alt="Product Image" class="product-image">
-        </div>
-        <div class="right-section">
-            <div class="login-container">
-                <div class="login-header">
-                    <div class="toggle">
-                        <span class="login">LOGIN</span>
-                        <span class="register active">SIGN UP</span>
-                    </div>
+<div class="custom-container">
+    <div class="custom-left-section">
+        <img src="/images/images-removebg-preview.png" alt="Product Image" class="custom-product-image">
+    </div>
+    <div class="custom-right-section">
+        <div class="custom-login-box">
+            <div class="custom-login-header">
+                <div class="custom-toggle">
+                    <span class="custom-login-tab">LOGIN</span>
+                    <span class="custom-register-tab active">SIGN UP</span>
                 </div>
-                <div class="login-form">
-                    <img src='/images/Expense_Tracker_Logo.png' alt="Brand Logo" class="brand-logo">
-                    <form action="/register" method="POST">
-                        <div class="form-group">
-                            <label for="username"><i class="fas fa-user"></i> Username</label>
-                            <input type="text" id="username" name="username" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="email"><i class="fas fa-envelope"></i> Email</label>
-                            <input type="email" id="email" name="email" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="password"><i class="fas fa-lock"></i> Password</label>
-                            <input type="password" id="password" name="password" required>
-                        </div>
-                        <button type="submit" class="btn login-btn">SIGN UP</button>
-                    </form>
-                    <div class="social-login">
-                        <span>Or Sign Up With</span>
-                        <div class="social-icons">
-                            <a href="#"><i class="fab fa-google"></i></a> <!-- Google Icon -->
-                        </div>
+            </div>
+            <div class="custom-login-form">
+                <img src='/images/Expense_Tracker_Logo.png' alt="Brand Logo" class="custom-brand-logo">
+                <form action="/register" method="POST">
+                    <div class="custom-form-group">
+                        <label for="custom-username"><i class="fas fa-user"></i> Username</label>
+                        <input type="text" id="custom-username" name="username" required>
+                    </div>
+                    <div class="custom-form-group">
+                        <label for="custom-email"><i class="fas fa-envelope"></i> Email</label>
+                        <input type="email" id="custom-email" name="email" required>
+                    </div>
+                    <div class="custom-form-group">
+                        <label for="custom-password"><i class="fas fa-lock"></i> Password</label>
+                        <input type="password" id="custom-password" name="password" required>
+                    </div>
+                    <button type="submit" class="custom-btn custom-login-btn">SIGN UP</button>
+                </form>
+                <div class="custom-social-login">
+                    <span>Or Sign Up With</span>
+                    <div class="custom-social-icons">
+                        <a href="#"><i class="fab fa-google"></i></a> <!-- Google Icon -->
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</body>
-</html>
+</div>

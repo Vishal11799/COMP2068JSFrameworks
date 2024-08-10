@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
-const Expense = require("../models/Expense"); // Import the Expense model
-const Budget = require("../models/Budget"); // Import the Budget model
+const Expense = require("../models/Expense");
+const Budget = require("../models/Budget");
 const PDFDocument = require("pdfkit");
 const fs = require("fs");
 const path = require("path");
@@ -32,7 +32,7 @@ router.get("/", async function (req, res, next) {
       budget: budget ? budget.monthly_budget : 0,
       remainingBudget,
       spent: totalSpent,
-      categorySpending: JSON.stringify(categorySpending), // Pass this data to the frontend
+      categorySpending: JSON.stringify(categorySpending),
       totalSpent,
     });
   } catch (error) {
@@ -127,7 +127,6 @@ router.post("/edit-expense/:id", async function (req, res, next) {
       return res.status(404).send("Expense not found");
     }
 
-    // Update the expense with new data
     const originalAmount = expense.amount;
     expense.category = category;
     expense.amount = amount;
@@ -176,7 +175,6 @@ router.get("/charts", async function (req, res, next) {
   try {
     const expenses = await Expense.find({});
 
-    // Calculate total spending by category
     const categorySpending = {};
     expenses.forEach((expense) => {
       if (categorySpending[expense.category]) {
@@ -186,10 +184,9 @@ router.get("/charts", async function (req, res, next) {
       }
     });
 
-    // Pass the data as a JSON string
     res.render("charts", {
       title: "Spending by Category",
-      categorySpending: JSON.stringify(categorySpending), // Correctly serialize the data
+      categorySpending: JSON.stringify(categorySpending),
     });
   } catch (error) {
     next(error);
@@ -201,23 +198,18 @@ router.get("/download-expenses", async (req, res, next) => {
   try {
     const expenses = await Expense.find({});
 
-    // Create invoices directory if it doesn't exist
     const invoicesDir = path.join(__dirname, "..", "invoices");
     if (!fs.existsSync(invoicesDir)) {
       fs.mkdirSync(invoicesDir);
     }
 
-    // Define the PDF path
     const invoicePath = path.join(invoicesDir, "recorded-expenses.pdf");
 
-    // Initialize PDF document
     const doc = new PDFDocument({ margin: 30 });
     doc.pipe(fs.createWriteStream(invoicePath));
 
-    // Title
     doc.fontSize(20).text("Recorded Expenses", { align: "center" }).moveDown(2);
 
-    // Table headers
     const headers = [
       "Date",
       "Category",
@@ -227,9 +219,8 @@ router.get("/download-expenses", async (req, res, next) => {
       "Description",
       "Tags/Labels",
     ];
-    const columnWidths = [100, 100, 70, 100, 100, 120, 100]; // Adjust column widths as needed
+    const columnWidths = [100, 100, 70, 100, 100, 120, 100];
 
-    // Print headers
     headers.forEach((header, i) => {
       doc
         .fontSize(12)
@@ -237,13 +228,11 @@ router.get("/download-expenses", async (req, res, next) => {
     });
     doc.moveDown(1);
 
-    // Draw a line after headers
     doc
       .moveTo(doc.x, doc.y)
       .lineTo(doc.page.width - doc.page.margins.right, doc.y)
       .stroke();
 
-    // Table rows
     expenses.forEach((expense) => {
       const row = [
         expense.date.toDateString(),
@@ -261,13 +250,11 @@ router.get("/download-expenses", async (req, res, next) => {
           .text(text, doc.x, doc.y, { width: columnWidths[i], align: "left" });
       });
 
-      doc.moveDown(0.5); // Add a small space between rows
+      doc.moveDown(0.5);
     });
 
-    // Finalize the PDF
     doc.end();
 
-    // Download the PDF
     res.download(invoicePath, "recorded-expenses.pdf");
   } catch (error) {
     console.error("Error generating recorded expenses PDF:", error);
