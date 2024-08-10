@@ -270,147 +270,167 @@
 
 /* 
 //login and registation */
-/* General Container Styles */
-.auth-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  height: 100vh;
-  padding: 0 50px;
-  background-color: #f4f4f4;
-}
-
-/* Left Section */
-.auth-left-section {
-  width: 50%;
-  background-color: #007bff;
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #6067FF; /* Background color similar to the image */
+  margin: 0;
+  padding: 0;
   display: flex;
   justify-content: center;
   align-items: center;
+  height: 100vh;
+}
+
+.auth-container {
+  display: flex;
+  width: 800px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.auth-left-section {
+  background-color: #6067FF; /* Left section color */
+  padding: 20px;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
 }
 
 .auth-product-image {
-  max-width: 80%;
-  height: auto;
-  transition: transform 0.2s ease-in-out;
+  width: 100%;
+  max-width: 400px;
+  object-fit: contain;
+  animation: fadeIn 1s ease-in-out;
 }
 
-.auth-product-image:hover {
-  transform: scale(1.05);
+@keyframes fadeIn {
+  from {
+      opacity: 0;
+      transform: translateY(-10px);
+  }
+  to {
+      opacity: 1;
+      transform: translateY(0);
+  }
 }
 
-/* Right Section */
 .auth-right-section {
-  width: 50%;
+  flex: 1;
+  background-color: #FFFFFF;
+  padding: 40px 20px;
   display: flex;
+  flex-direction: column;
   justify-content: center;
-  align-items: center;
 }
 
 .auth-box {
-  width: 80%;
+  width: 100%;
   max-width: 400px;
-  padding: 40px;
-  background-color: #fff;
-  border-radius: 10px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  margin: auto;
 }
 
-/* Header and Toggle */
 .auth-header {
-  margin-bottom: 30px;
   text-align: center;
+  margin-bottom: 20px;
 }
 
 .auth-toggle {
   display: flex;
   justify-content: center;
-  margin-bottom: 30px;
-  font-weight: bold;
-  font-size: 1.2em;
 }
 
 .auth-toggle span {
   margin: 0 15px;
+  font-size: 18px;
+  font-weight: bold;
   cursor: pointer;
-  transition: color 0.2s ease-in-out;
 }
 
 .auth-toggle .active {
-  color: #007bff;
+  color: #6067FF;
 }
 
-.auth-toggle span:hover {
-  color: #0056b3;
-}
-
-/* Logo */
-.auth-logo {
-  display: block;
-  margin: 0 auto 20px;
-  width: 100px;
-  height: auto;
-}
-
-/* Form Styles */
 .auth-form {
-  width: 100%;
+  text-align: center;
+}
+
+.auth-logo {
+  width: 80px;
+  margin-bottom: 20px;
 }
 
 .auth-form-group {
   margin-bottom: 20px;
+  text-align: left;
 }
 
 .auth-form-group label {
-  font-weight: bold;
-  margin-bottom: 10px;
   display: block;
-  color: #333;
+  font-size: 14px;
+  margin-bottom: 8px;
+  color: #6067FF;
 }
 
 .auth-form-group input {
   width: 100%;
   padding: 10px;
-  border: 1px solid #ccc;
   border-radius: 5px;
-  font-size: 1em;
+  border: 1px solid #ccc;
+  font-size: 14px;
 }
 
 .auth-btn {
   width: 100%;
-  padding: 10px;
-  background-color: #007bff;
+  background-color: #6067FF;
+  color: #fff;
   border: none;
-  color: white;
-  font-weight: bold;
+  padding: 12px;
   border-radius: 5px;
+  font-size: 16px;
   cursor: pointer;
-  font-size: 1.1em;
-  transition: background-color 0.2s ease-in-out;
+  transition: background-color 0.3s;
 }
 
 .auth-btn:hover {
-  background-color: #0056b3;
+  background-color: #505BD5;
 }
 
-/* Social Login */
 .auth-social-login {
-  text-align: center;
   margin-top: 20px;
-  font-size: 1.1em;
-  color: #666;
+}
+
+.auth-social-login span {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 14px;
+  color: #6067FF;
 }
 
 .auth-social-icons a {
+  color: #6067FF;
+  font-size: 24px;
   margin: 0 10px;
-  color: #007bff;
-  font-size: 2em;
-  transition: color 0.2s ease-in-out;
+  transition: color 0.3s;
 }
 
 .auth-social-icons a:hover {
-  color: #0056b3;
+  color: #505BD5;
 }
+
+@media (max-width: 768px) {
+  .auth-container {
+      flex-direction: column;
+      width: 90%;
+  }
+  
+  .auth-left-section, .auth-right-section {
+      padding: 20px;
+  }
+}
+
 
 /* //registrtion css */
 

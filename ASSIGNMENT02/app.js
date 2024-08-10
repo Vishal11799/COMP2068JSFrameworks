@@ -5,7 +5,7 @@ var logger = require("morgan");
 var mongoose = require("mongoose");
 var hbs = require("hbs");
 // Configs
-var config = require("./configs/globals");
+var globals = require("./configs/globals");
 var indexRouter = require("./routes/index");
 var homeRouter = require("./routes/home");
 
@@ -16,19 +16,18 @@ app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "hbs");
 hbs.registerPartials(path.join(__dirname, "views/shared"));
 
-
- hbs.registerHelper("formatDate", function (date) {
+hbs.registerHelper("formatDate", function (date) {
   return new Date(date).toLocaleDateString(); // Formats as 'MM/DD/YYYY'
 });
 
 hbs.registerHelper("formatDateForInput", function (date) {
-return new Date(date).toISOString().split("T")[0]; // Formats as 'YYYY-MM-DD' for input field
+  return new Date(date).toISOString().split("T")[0]; // Formats as 'YYYY-MM-DD' for input field
 });
 
-// // Register the 'eq' helper for comparison
-// hbs.registerHelper("eq", function (a, b) {
-//   return a === b;
-// });
+// Register the 'eq' helper for comparison
+hbs.registerHelper("eq", function (a, b) {
+  return a === b;
+});
 
 // Middleware setup
 app.use(logger("dev"));
@@ -47,15 +46,14 @@ app.use("/", indexRouter);
 
 // Connect to MongoDB
 mongoose
-  .connect(
-    "mongodb+srv://creditcardadmin:TAJSUPpXS8RvlVyK@cluster0.zklhwz3.mongodb.net/"
-  )
+  .connect(globals.ConnectionString.MongoDB)
   .then(() => {
-    console.log("Connected to MongoDB!");
+    console.log('Connected successfully to MongoDB!');
   })
   .catch((err) => {
     console.log(err);
   });
+
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
