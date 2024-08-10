@@ -6,12 +6,15 @@
         <div class="custom-login-box">
             <div class="custom-login-header">
                 <div class="custom-toggle">
-                    <span class="custom-login-tab">LOGIN</span>
+                    <span class="custom-login-tab">
+                        <a href="/login" title="Login">LOGIN</a>
+                    </span>
                     <span class="custom-register-tab active">SIGN UP</span>
                 </div>
             </div>
             <div class="custom-login-form">
                 <img src='/images/Expense_Tracker_Logo.png' alt="Brand Logo" class="custom-brand-logo">
+                
                 <form action="/register" method="POST">
                     <div class="custom-form-group">
                         <label for="custom-username"><i class="fas fa-user"></i> Username</label>
@@ -19,14 +22,19 @@
                     </div>
                     <div class="custom-form-group">
                         <label for="custom-email"><i class="fas fa-envelope"></i> Email</label>
-                        <input type="email" id="custom-email" name="email" required>
+                        <input type="email" id="custom-email" name="email" required placeholder="email@email.com">
                     </div>
                     <div class="custom-form-group">
                         <label for="custom-password"><i class="fas fa-lock"></i> Password</label>
-                        <input type="password" id="custom-password" name="password" required>
+                        <input type="password" id="custom-password" name="password" >
+                    </div>
+                    <div class="custom-form-group">
+                        <label for="custom-confirm"><i class="fas fa-lock"></i> Confirm Password</label>
+                        <input type="password" id="custom-confirm" name="confirm" >
                     </div>
                     <button type="submit" class="custom-btn custom-login-btn">SIGN UP</button>
                 </form>
+                
                 <div class="custom-social-login">
                     <span>Or Sign Up With</span>
                     <div class="custom-social-icons">

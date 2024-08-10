@@ -4,10 +4,16 @@ var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 var mongoose = require("mongoose");
 var hbs = require("hbs");
+var User = require("./models/ser");
 // Configs
 var globals = require("./configs/globals");
 var indexRouter = require("./routes/index");
 var homeRouter = require("./routes/home");
+
+
+//import passport
+var passport = require("passport");
+var session = require("express-session");
 
 var app = express();
 
@@ -35,6 +41,20 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
+//config
+app.use(session({
+  secret: 'creditcardexpancetraker',
+  resave: false,
+  saveUninitialized: false
+}));
+//start passport
+app.use(passport.initialize());
+app.use(passport.session());
+//passport security
+passport.use(User.createStrategy());
+
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
 
 // Routes setup
 // app.use("/projects", projectsRouter);

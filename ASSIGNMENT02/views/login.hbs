@@ -7,15 +7,29 @@
             <div class="auth-header">
                 <div class="auth-toggle">
                     <span class="login active">LOGIN</span>
-                    <span class="register">SIGN UP</span>
+                    <span class="register">
+                        <a href="/register" title="Register">SIGN UP</a>
+                    </span>
                 </div>
             </div>
             <div class="auth-form">
                 <img src='/images/Expense_Tracker_Logo.png' alt="Brand Logo" class="auth-logo">
-                <form id="login-form">
+                
+                {{!-- Show error message if credentials are incorrect --}}
+                {{#if messages.length}}
+                    <div class="alert alert-danger">
+                        Invalid credentials
+                    </div>
+                {{else}}
+                    <div class="alert alert-info">
+                        Please enter your credentials
+                    </div>
+                {{/if}}
+                
+                <form method="post" id="login-form">
                     <div class="auth-form-group">
-                        <label for="email"><i class="fas fa-user"></i> Email</label>
-                        <input type="email" id="email" name="email" required>
+                        <label for="username"><i class="fas fa-user"></i> Username</label>
+                        <input type="text" id="username" name="username" required>
                     </div>
                     <div class="auth-form-group">
                         <label for="password"><i class="fas fa-lock"></i> Password</label>
@@ -23,6 +37,7 @@
                     </div>
                     <button type="submit" class="auth-btn">LOGIN</button>
                 </form>
+                
                 <div class="auth-social-login">
                     <span>Or Login With</span>
                     <div class="auth-social-icons">
